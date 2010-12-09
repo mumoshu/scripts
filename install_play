@@ -1,0 +1,15 @@
+#!/bin/sh
+
+VERSION=1.1
+MODULE_NAME=play-${VERSION}
+WORK_DIR=${MODULE_NAME}
+ZIP_FILE_NAME=${MODULE_NAME}.zip
+TARGET_DIR=~/app
+
+mkdir ${WORK_DIR}
+cd ${WORK_DIR}
+wget http://download.playframework.org/releases/${ZIP_FILE_NAME}
+unzip ${ZIP_FILE_NAME}
+
+mkdir -p ${TARGET_DIR}
+mv ${MODULE_NAME} ${TARGET_DIR}

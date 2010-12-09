@@ -1,0 +1,58 @@
+#
+# setup the PATH environment variable.
+#
+
+function add_path_if_directory() {
+    if test -d $1
+    then
+	add_path $1
+    fi
+}
+
+function add_path() {
+    if test $PATH
+    then
+	PATH=$PATH:$1
+    else
+	PATH=$
+    fi
+}
+
+function add_path_if_contains_executable() {
+    for file in $dir/*
+    do
+	if test -x $file
+	then
+	    add_path $dir
+	    break 1
+	fi
+    done
+}
+
+for dir in ${HOME}/app/*
+do
+    bin_dir=$dir/bin
+    add_path_if_directory $bin_dir
+    add_path_if_contains_executable $dir
+done
+
+#
+# setup the SOMETHING_HOME environment variables.
+#
+
+function export_if_directory() {
+    if test -d $2
+    then
+	export $1=$2
+    fi
+}
+
+for dir in ${HOME}/app/*jdk*
+do
+    export_if_directory JDK_HOME $dir
+done
+
+for dir in ${HOME}/app/*scala*
+do
+    export_if_directory SCALA_HOME $dir
+done
