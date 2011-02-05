@@ -14,12 +14,13 @@ unzip ${ZIP_FILE_NAME}
 mkdir -p ${TARGET_DIR}
 mv ${MODULE_NAME} ${TARGET_DIR}
 
-APP_DIR=${TARGET_DIR}/${MODULE_NAME}
+# install my favorite play plugins
 
-cd $APP_DIR
-echo y\
-| ./play install gae
-echo y\
-| ./play install siena
-echo y\
-./play install scala
+PLUGINS='gae siena scala maven'
+
+cd ${TARGET_DIR}/${MODULE_NAME}
+
+for PLUGIN in $PLUGINS
+do
+    echo y | ./play install $PLUGIN
+done

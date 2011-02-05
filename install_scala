@@ -1,0 +1,12 @@
+#!/bin/sh
+
+DIR_URL=http://www.scala-lang.org/downloads/distrib/files/
+SCALA_NAME=scala-2.8.1.final
+TGZ_NAME=${SCALA_NAME}.tgz
+TGZ_URL=${DIR_URL}/${TGZ_NAME}
+
+cd ~/Downloads
+wget $TGZ_URL
+chmod +x $TGZ_NAME
+tar zxvf $TGZ_NAME
+mv $SCALA_NAME ~/app
