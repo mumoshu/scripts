@@ -19,7 +19,8 @@ vbell off
 bell_msg "Bell in window %^G"
 bind w windowlist -b
 hardstatus alwayslastline "%{= wk} %-w%{=bu dr}%n %t%{-}%+w %= %{=b wb}%y/%m/%d %{=b wb}%c"
-shell -$SHELL
+#shell -$SHELL
+shell zsh
 startup_message off
 autodetach on
 
