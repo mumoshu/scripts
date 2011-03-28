@@ -1,0 +1,13 @@
+#!/bin/sh
+
+DIR=`dirname $0`
+
+echo adding jars to classpath ...
+
+$DIR/find_jar $1
+
+echo running scala repl ...
+
+echo jars: `$DIR/jars $1`
+
+scala -classpath `$DIR/jars $1`

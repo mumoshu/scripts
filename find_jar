@@ -1,0 +1,3 @@
+#!/bin/sh
+
+find ~/.m2/repository -name $1\*.jar | grep -v sources
