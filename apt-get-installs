@@ -1,3 +1,4 @@
 #!/bin/sh
 
-sudo apt-get install emacs23-nox git maven2 ant -y
+sudo apt-get install emacs23-nox git maven2 ant \
+libreadline6-dev irb -y
