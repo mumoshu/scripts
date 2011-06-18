@@ -1,12 +1,21 @@
 #!/bin/sh
 
+if [ ! $1 ]
+then
+    echo 'Missing the version number for which Scala to install.'
+    exit 1
+fi
+
 DIR_URL=http://www.scala-lang.org/downloads/distrib/files/
-SCALA_NAME=scala-2.8.1.final
+SCALA_NAME=scala-$1
 TGZ_NAME=${SCALA_NAME}.tgz
 TGZ_URL=${DIR_URL}/${TGZ_NAME}
+TARGET_DIRECTORY=~/Library/Scala
 
 cd ~/Downloads
 wget $TGZ_URL
-chmod +x $TGZ_NAME
 tar zxvf $TGZ_NAME
-mv $SCALA_NAME ~/app
+rm $TGZ_NAME
+
+mkdir -p $TARGET_DIRECTORY
+mv $SCALA_NAME $TARGET_DIRECTORY
