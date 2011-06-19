@@ -1,0 +1,32 @@
+#!/bin/sh
+
+if [ ! $1 ]
+then
+    echo 'Missing the version number for which Scala to install.'
+    exit 1
+fi
+
+DIR_URL=http://www.scala-lang.org/downloads/distrib/files
+SCALA_NAME=scala-$1
+SCALA_TGZ_NAME=${SCALA_NAME}.tgz
+SCALA_TGZ_URL=${DIR_URL}/${SCALA_TGZ_NAME}
+DOC_NAME=$SCALA_NAME-devel-docs
+DOC_TGZ_NAME=$DOC_NAME.tgz
+DOC_TGZ_URL=$DIR_URL/$DOC_TGZ_NAME
+TARGET_DIRECTORY=~/Library/Scala
+
+mkdir -p $TARGET_DIRECTORY
+
+if [ $2 != "doc-only" ]
+then
+cd ~/Downloads
+wget $SCALA_TGZ_URL
+tar zxvf $SCALA_TGZ_NAME
+rm $SCALA_TGZ_NAME
+mv $SCALA_NAME $TARGET_DIRECTORY
+fi
+
+wget $DOC_TGZ_URL
+tar zxvf $DOC_TGZ_NAME
+rm $DOC_TGZ_NAME
+mv $DOC_NAME $TARGET_DIRECTORY/$SCALA_NAME/doc/scala-devel-docs
