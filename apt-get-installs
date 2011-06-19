@@ -1,4 +1,15 @@
 #!/bin/sh
 
+# Sun JDK用のパッケージ定義を取り込む
+sudo add-apt-repository ppa:ferramroberto/java
+sudo apt-get update
+
+# 諸々を自動でインストール
 sudo apt-get install emacs23-nox git maven2 ant \
-libreadline6-dev irb -y
+libreadline6-dev irb \
+sun-java6-jdk sun-java6-source \
+galternatives \
+-y
+
+echo "Alternatives > java より、Sun JDKのChoiceにチェックを入れてください。"
+galternatives &
