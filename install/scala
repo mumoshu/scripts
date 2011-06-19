@@ -19,7 +19,6 @@ mkdir -p $TARGET_DIRECTORY
 
 if [ [$2:default] != doc-only ]
 then
-cd ~/Downloads
 wget $SCALA_TGZ_URL
 tar zxvf $SCALA_TGZ_NAME
 rm $SCALA_TGZ_NAME
